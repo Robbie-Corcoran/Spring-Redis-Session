@@ -17,10 +17,14 @@ public class HomeController {
         return "Hello, " + principal.getName();
     }
 
+    @GetMapping("/count")
+        public String count(HttpSession session){
+        return "HOME_VIEW_COUNT " + session.getAttribute(HOME_VIEW_COUNT);
+        }
+
     private void incrementCount(HttpSession session, String attribute) {
         var homeViewCount = session.getAttribute(attribute) == null ? 0 : (Integer) session.getAttribute(attribute);
         session.setAttribute(attribute, homeViewCount + 1);
     }
-
-
+    
 }
